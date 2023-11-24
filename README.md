@@ -64,11 +64,11 @@ http://localhost: your server port number like 3001
 
 7. Api Endpoints
 
-. GET /api/users : fetch all users
-. GET /api/users/:userId : fetch a specific user
-. POST /api/users : Create new user
-. DELETE /api/users/:userId : delete a specific user
-. PUT /api/users/:userId : update a specific user
-. GET /api/users/:userId/orders : fetch user orders
-. PUT /api/users/:userId/orders : Add new orders to users
-. Get /api/users/:userId/orders/total-price : calculate total of orders for a specific users
+- GET /api/users : fetch all users
+- GET /api/users/:userId : fetch a specific user
+- POST /api/users : Create new user
+- DELETE /api/users/:userId : delete a specific user
+- PUT /api/users/:userId : update a specific user
+- GET /api/users/:userId/orders : fetch user orders
+- PUT /api/users/:userId/orders : Add new orders to users
+- Get /api/users/:userId/orders/total-price : calculate total of orders for a specific users
