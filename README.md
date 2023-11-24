@@ -57,7 +57,7 @@ npm run start:dev
 
 6. Access the Application
 
-your appplication should now be running.Access it a web browser using
+- your appplication should now be running.Access it a web browser using
 
 ```ts
 http://localhost: your server port number like 3001
