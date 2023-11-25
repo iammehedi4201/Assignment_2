@@ -1,6 +1,4 @@
-# <p style="color: blue">Assignment-2 : <p>
-
-### project setup step
+# <p style="color: blue">project setup step : <p>
 
 ## prerequisites
 
