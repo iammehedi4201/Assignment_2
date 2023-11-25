@@ -11,7 +11,6 @@ import {
 import config from '../../config';
 
 //UserNameSchema which is Subschema of UserSchema
-
 const UserNameSchema = new Schema<TUserName>(
   {
     firstName: {
@@ -29,7 +28,6 @@ const UserNameSchema = new Schema<TUserName>(
 );
 
 //UserAddressSchema which is Subschema of UserSchema
-
 const UserAddressSchema = new Schema<TUserAddress>(
   {
     street: {
@@ -51,6 +49,7 @@ const UserAddressSchema = new Schema<TUserAddress>(
   { _id: false },
 );
 
+//UserOrdersSchema which is Subschema of UserSchema
 const UserOrdersSchema = new Schema<TUserOrder>(
   {
     productName: {
@@ -122,7 +121,7 @@ const UserSchema = new Schema<TUser, UserModel>({
   orders: [UserOrdersSchema],
 });
 
-//Pre Middeleware to hash the Password on save or create method
+//Pre Middeleware to hashing the Password  when new document is created to database
 UserSchema.pre('save', async function (next) {
   const user = this;
   user.password = await bcrypt.hash(
@@ -132,7 +131,7 @@ UserSchema.pre('save', async function (next) {
   next();
 });
 
-//Pre Middeleware to hash the Password on save or create method
+//Pre Middeleware to hashing the Password when updating the user info
 UserSchema.pre('findOneAndUpdate', async function (next) {
   const update = this.getUpdate() as TUser;
   if (update.password) {

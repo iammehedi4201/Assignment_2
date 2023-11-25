@@ -34,5 +34,4 @@ export interface TUser {
 //static method for user Existence
 export interface UserModel extends Model<TUser> {
   isUserExists(userId: number): Promise<TUser | null>;
-  // isOrderFieldExits(userId: number): Promise<TUser | null>;
 }

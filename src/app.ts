@@ -9,7 +9,7 @@ app.use(express.text());
 app.use(cors());
 
 //Application Routes
-app.use('/api', UserRouter);
+app.use('/api/users', UserRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello There');

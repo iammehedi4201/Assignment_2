@@ -73,4 +73,4 @@ http://localhost: your server port number like 3001
 - PUT /api/users/:userId : update a specific user
 - GET /api/users/:userId/orders : fetch user orders
 - PUT /api/users/:userId/orders : Add new orders to users
-  . Get /api/users/:userId/orders/total-price : calculate total of orders for a specific users
+- Get /api/users/:userId/orders/total-price : calculate total of orders for a specific users

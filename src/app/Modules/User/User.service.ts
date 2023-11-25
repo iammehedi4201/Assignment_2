@@ -7,6 +7,7 @@ const CreateNewUserToDB = async (userData: TUser) => {
   const result = await User.findOne({ userId: userData.userId }).select([
     '-password',
     '-_id',
+    '-orders',
   ]);
   return result;
 };
@@ -57,7 +58,7 @@ const AddNewPrdouctToOrderToDB = async (
   const result = await User.findOneAndUpdate(
     { userId: userId },
     {
-      $addToSet: {
+      $push: {
         orders: orderInfo,
       },
     },

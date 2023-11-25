@@ -3,6 +3,7 @@ import UserValidationWithZodSchema from './User.zod.validation';
 import { UserService } from './User.service';
 import { User } from './User.model';
 
+//Create new user
 const CreateNewUser = async (req: Request, res: Response) => {
   try {
     const { user } = req.body;
@@ -16,12 +17,13 @@ const CreateNewUser = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: (error as Error).message || 'Something Went Wrong !',
+      message: (error as Error).message || 'Failed to create user !',
       error: error,
     });
   }
 };
 
+//Get all user
 const GetAllUsers = async (req: Request, res: Response) => {
   try {
     const result = await UserService.GetAllUsersFormDB();
@@ -33,7 +35,7 @@ const GetAllUsers = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: (error as Error).message || 'Something Went Wrong !',
+      message: (error as Error).message || 'Failed to get all user!',
       error: error,
     });
   }
@@ -63,7 +65,7 @@ const GetAUser = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: (error as Error).message || 'Something Went Wrong !',
+      message: (error as Error).message || 'Failed to get a specific user !',
       error: error,
     });
   }
@@ -97,7 +99,7 @@ const UpdateAUserInfo = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: (error as Error).message || 'Something Went Wrong !',
+      message: (error as Error).message || 'Failed to update user info !',
       error: error,
     });
   }
@@ -127,7 +129,7 @@ const DeleteAUser = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: (error as Error).message || 'Something Went Wrong !',
+      message: (error as Error).message || 'Failed to delete a user !',
       error: error,
     });
   }
@@ -158,7 +160,8 @@ const AddNewProductToOrder = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: (error as Error).message || 'Something Went Wrong !',
+      message:
+        (error as Error).message || 'Failed to add new product to orders !',
       error: error,
     });
   }
@@ -188,7 +191,9 @@ const GetAllOrdersForAUser = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: (error as Error).message || 'Something Went Wrong !',
+      message:
+        (error as Error).message ||
+        'Failed to get all orders of a specific user  !',
       error: error,
     });
   }
@@ -222,7 +227,7 @@ const CalculateTotalPriceOfOrderForAUser = async (
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: (error as Error).message || 'Something Went Wrong !',
+      message: (error as Error).message || 'Failed to calclulate total price !',
       error: error,
     });
   }
