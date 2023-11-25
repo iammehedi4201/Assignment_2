@@ -5,6 +5,7 @@ import {
   UserValidationWithZodSchema,
   updatedInfoValidation,
 } from './User.zod.validation';
+import { TUser } from './User.interface';
 
 //Create new user
 const CreateNewUser = async (req: Request, res: Response) => {
@@ -80,7 +81,9 @@ const UpdateAUserInfo = async (req: Request, res: Response) => {
     const userId = Number(req.params.userId);
     const { UpdateAUserInfo } = req.body;
     if (await User.isUserExists(userId)) {
-      const zodParseData = updatedInfoValidation.parse(UpdateAUserInfo);
+      const zodParseData = updatedInfoValidation.parse(
+        UpdateAUserInfo,
+      ) as TUser;
       const result = await UserService.UpdateAUserInfoToDB(
         userId,
         zodParseData,
