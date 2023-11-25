@@ -16,8 +16,8 @@ const UserOrderValidationSchema = z.object({
   price: z.number(),
   quantity: z.number(),
 });
-
-const UserValidationWithZodSchema = z.object({
+//validation for the created User
+export const UserValidationWithZodSchema = z.object({
   userId: z.number(),
   username: z.string().trim(),
   password: z.string().trim(),
@@ -30,4 +30,16 @@ const UserValidationWithZodSchema = z.object({
   orders: z.array(UserOrderValidationSchema).optional(),
 });
 
-export default UserValidationWithZodSchema;
+//validation for updated User info
+export const updatedInfoValidation = z.object({
+  userId: z.number().optional(),
+  username: z.string().trim().optional(),
+  password: z.string().trim().optional(),
+  fullName: UserNameValidationSchema.optional(),
+  age: z.number().optional(),
+  email: z.string().email().optional(),
+  isActive: z.boolean().optional(),
+  hobbies: z.string().array().optional(),
+  address: UserAddressValidationSchema.optional(),
+  orders: z.array(UserOrderValidationSchema).optional(),
+});

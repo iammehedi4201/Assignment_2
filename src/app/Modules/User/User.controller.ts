@@ -1,7 +1,10 @@
 import { Request, Response } from 'express';
-import UserValidationWithZodSchema from './User.zod.validation';
 import { UserService } from './User.service';
 import { User } from './User.model';
+import {
+  UserValidationWithZodSchema,
+  updatedInfoValidation,
+} from './User.zod.validation';
 
 //Create new user
 const CreateNewUser = async (req: Request, res: Response) => {
@@ -77,9 +80,10 @@ const UpdateAUserInfo = async (req: Request, res: Response) => {
     const userId = Number(req.params.userId);
     const { UpdateAUserInfo } = req.body;
     if (await User.isUserExists(userId)) {
+      const zodParseData = updatedInfoValidation.parse(UpdateAUserInfo);
       const result = await UserService.UpdateAUserInfoToDB(
         userId,
-        UpdateAUserInfo,
+        zodParseData,
       );
       res.status(200).json({
         success: true,
