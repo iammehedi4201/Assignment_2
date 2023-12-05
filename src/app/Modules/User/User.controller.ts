@@ -10,8 +10,8 @@ import { TUser } from './User.interface';
 //Create new user
 const CreateNewUser = async (req: Request, res: Response) => {
   try {
-    const { user } = req.body;
-    const zodParseData = UserValidationWithZodSchema.parse(user);
+    const userInfo = req.body;
+    const zodParseData = UserValidationWithZodSchema.parse(userInfo);
     const result = await UserService.CreateNewUserToDB(zodParseData);
     res.status(200).json({
       success: true,
@@ -79,7 +79,7 @@ const GetAUser = async (req: Request, res: Response) => {
 const UpdateAUserInfo = async (req: Request, res: Response) => {
   try {
     const userId = Number(req.params.userId);
-    const { UpdateAUserInfo } = req.body;
+    const UpdateAUserInfo = req.body;
     if (await User.isUserExists(userId)) {
       const zodParseData = updatedInfoValidation.parse(
         UpdateAUserInfo,
